@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GSAP intro</title>
+  <link rel="stylesheet" media="all" href="css/main.css">
+</head>
+
+<body>
+
+  <div class="scene">
+    <svg
+      preserveAspectRatio="xMinYMin meet"
+      xmlns="http://www.w3.org/2000/svg"
+      width="1280"
+      height="720"
+      viewBox="0 0 1280 720"
+    >
+      <g class="space">
+        @@include(idsToClasses('img/space.svg'))
+      </g>
+
+      <g class="room">
+        @@include(idsToClasses('img/room.svg'))
+      </g>
+
+      <g class="tower">
+        @@include(idsToClasses('img/tower.svg'))
+      </g>
+
+      <g class="clouds-group">
+        <g class="particle">@@include(idsToClasses('img/cloud-a.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-b.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-a.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-b.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-a.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-b.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-a.svg'))</g>
+        <g class="particle">@@include(idsToClasses('img/cloud-b.svg'))</g>
+      </g>
+    </svg>
+
+    <div class="scene__outro-text">GSAP</div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

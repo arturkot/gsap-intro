@@ -1,0 +1,24 @@
+.scene-controls__control {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 5vw;
+  width: 90vw;
+  z-index: 999;
+
+  .is-debug & {
+    display: block;
+  }
+}
+
+.scene-controls__play {
+  display: none;
+  position: fixed;
+  top: 40px;
+  left: 5vw;
+  z-index: 999;
+
+  .is-debug & {
+    display: block;
+  }
+}
