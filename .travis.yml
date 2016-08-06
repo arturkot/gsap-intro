@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "5.11"
+
+script: bash ./deploy.sh
+env:
+  global:
+  - ENCRYPTION_LABEL: "66b73c88cb5f"
+  - COMMIT_AUTHOR_EMAIL: "arturkot85@gmail.com"

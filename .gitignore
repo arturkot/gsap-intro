@@ -2,3 +2,5 @@
 .tmp
 dist
 node_modules
+gsap_intro_deploy_key
+gsap_intro_deploy_key.pub
