@@ -34,7 +34,7 @@
     "jsdir": "mkdirp ./dist/js",
     "browserify": "browserify ./src/js/main.js -o ./dist/js/main.js",
     "uglify": "uglifyjs ./dist/js/main.js -o ./dist/js/main.js --screw-ie8 -m",
-    "build-js": "npm run browserify && npm run uglify",
+    "build-js": "npm run jsdir && npm run browserify && npm run uglify",
     "watch-js": "onchange './src/**/*.js' -- watchify ./src/js/main.js -o ./dist/js/main.js -v",
     "copy-media": "cp-cli ./src/media ./dist/media",
     "watch": "parallelshell 'http-server ./dist -p 3000 --cors ' 'gulp' 'npm run watch-js'",
