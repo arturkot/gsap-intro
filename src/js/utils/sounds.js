@@ -39,7 +39,7 @@ const addSound = (name, fileName) => {
   if (!fileName) { fileName = name; }
 
   const offScreenPaused = false;
-  const sound = new Howl({ src: [ `http://localhost:3000/media/${fileName}.ogg`, `http://localhost:3000/media/${fileName}.mp3` ] });
+  const sound = new Howl({ src: [ `http://${window.BASE_URL}/media/${fileName}.ogg`, `http://${window.BASE_URL}/media/${fileName}.mp3` ] });
   const promise = new Promise( (resolve) => {
     sound.on('load', () => {
       progressedCount += 1;
