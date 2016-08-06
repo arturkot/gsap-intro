@@ -1,4 +1,4 @@
-import Sounds from '_root/shared/sounds';
+import Sounds from '_root/utils/sounds';
 
 Sounds.addSound('humming');
 Sounds.addSound('music');

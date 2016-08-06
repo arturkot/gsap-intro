@@ -5,7 +5,7 @@ import 'gsap/src/uncompressed/TweenMax';
 import _random from 'lodash/number/random';
 import TimelineMax from 'gsap/src/uncompressed/TimelineMax';
 import { room, tower, cloudsGroup, earthClouds } from '_root/scenes/objects';
-import { SCENE_CX, SCENE_CY } from '_root/scenes/const';
+import { SCENE_CX, SCENE_CY } from '_root/setup/const';
 
 const tl = new TimelineMax();
 const cloudsParticles = cloudsGroup.querySelectorAll('.particle');

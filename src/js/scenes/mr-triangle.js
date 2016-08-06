@@ -1,7 +1,7 @@
 "use strict";
 
 import "MorphSVGPlugin";
-import Sounds from '_root/scenes/sounds';
+import Sounds from '_root/setup/sounds';
 import { Power1, Elastic, Bounce } from 'gsap/src/uncompressed/easing/EasePack';
 import 'gsap/src/uncompressed/TweenMax';
 import TimelineMax from 'gsap/src/uncompressed/TimelineMax';
