@@ -1,0 +1,63 @@
+{
+  "name": "gsap-intro",
+  "version": "0.1.0",
+  "description": "A simple animation showing how GSAP helps to structure bigger projects.",
+  "main": "index.js",
+  "devDependencies": {
+    "aliasify": "2.0.0",
+    "babel-preset-es2015": "6.5.0",
+    "babelify": "7.2.0",
+    "browserify": "12.0.1",
+    "browserify-shim": "^3.8.12",
+    "cp-cli": "^1.0.2",
+    "gsap": "1.18.2",
+    "gulp": "3.9.1",
+    "gulp-autoprefixer": "3.1.0",
+    "gulp-file-include": "0.14.0",
+    "gulp-sass": "2.3.2",
+    "gulp-sourcemaps": "1.6.0",
+    "howler": "2.0.0-beta8",
+    "http-server": "^0.9.0",
+    "lodash": "3.10.1",
+    "mkdirp": "0.5.1",
+    "normalize-scss-vanilla": "1.0.1",
+    "onchange": "2.0.0",
+    "opener": "^1.4.1",
+    "parallelshell": "2.0.0",
+    "promise-polyfill": "3.1.0",
+    "rimraf": "2.5.4",
+    "uglify-js": "2.4.24",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "clear-dist": "rimraf ./dist",
+    "jsdir": "mkdirp ./dist/js",
+    "browserify": "browserify ./src/js/main.js -o ./dist/js/main.js",
+    "uglify": "uglifyjs ./dist/js/main.js -o ./dist/js/main.js --screw-ie8 -m",
+    "build-js": "npm run jsdir && npm run browserify && npm run uglify",
+    "watch-js": "onchange './src/**/*.js' -- watchify ./src/js/main.js -o ./dist/js/main.js -v",
+    "copy-media": "cp-cli ./src/media ./dist/media",
+    "watch": "parallelshell 'http-server ./dist -p 3000 --cors ' 'gulp' 'npm run watch-js'",
+    "setup": "npm run clear-dist && npm run jsdir && npm run browserify && npm run copy-media && gulp file-include && gulp sass",
+    "start": "npm run setup && opener http://codepen.io/arturkot/pen/akRKVm && npm run watch",
+    "build": "npm run copy-media && npm run build-js && gulp file-include && gulp sass"
+  },
+  "browserify-shim": {
+    "MorphSVGPlugin": "global:MorphSVGPlugin",
+    "SplitText": "global:SplitText"
+  },
+  "browserify": {
+    "transform": [
+      "babelify",
+      "browserify-shim",
+      "aliasify"
+    ]
+  },
+  "aliasify": {
+    "aliases": {
+      "_root": "./src/js"
+    }
+  },
+  "author": "Artur Kot",
+  "license": "ISC"
+}

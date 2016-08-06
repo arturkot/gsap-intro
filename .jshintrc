@@ -1,0 +1,15 @@
+{
+  "esnext": true,
+  "strict": "global",
+  "module": true,
+  "browser": true,
+  "indent": 2,
+  "trailing": true,
+  "unused": true,
+  "undef": true,
+  "curly": true,
+  "browserify": true,
+  "globals": {
+    "console": true
+  }
+}
