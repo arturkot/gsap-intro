@@ -1,7 +1,11 @@
+import Sounds from '_root/utils/sounds';
+
 export default function(timeline) {
   const bodyEl = document.querySelector('body');
   const timelineControlEl = document.createElement('input');
   const timelinePlayEl = document.createElement('button');
+  const { items, resumeCurrent, pauseCurrent } = Sounds;
+
   let intitalProgress = parseFloat( localStorage.getItem('timelineValue') );
   let isPlaying = false;
 
@@ -26,6 +30,16 @@ export default function(timeline) {
     timelineControlEl.value = timeline.progress();
   });
 
+  window.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && isPlaying) {
+      items.forEach(resumeCurrent);
+    }
+
+    if (document.visibilityState === 'hidden') {
+      items.forEach(pauseCurrent);
+    }
+  });
+
   timelineControlEl.addEventListener('input', () => {
     if (isPlaying) {
       isPlaying = false;
@@ -38,9 +52,11 @@ export default function(timeline) {
   timelinePlayEl.addEventListener('click', () => {
     if (isPlaying) {
       isPlaying = false;
+      items.forEach(pauseCurrent);
       timeline.pause();
     } else {
       isPlaying = true;
+      items.forEach(resumeCurrent);
       timeline.play();
     }
   });

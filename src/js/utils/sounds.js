@@ -6,36 +6,43 @@ let progressedCount = 0;
 const items = [];
 const callbacks = [];
 
-window.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') {
-    items.forEach( item => {
-      if (item.offScreenPaused) {
-        item.sound.play();
-        item.offScreenPaused = false;
-      }
-    });
-  }
+// It _should_ deal with the distorted sounds issue on iOS
+// https://github.com/goldfire/howler.js/issues/434
+Howler.unload();
 
-  if (document.visibilityState === 'hidden') {
-    items.forEach( item => {
-      if (item.sound.playing()) {
-        item.sound.pause();
-        item.offScreenPaused = true;
-      }
-    });
-  }
-});
-
-const onLoad = callback => callbacks.push(callback);
-
-const getSound = (name) => _find(items, { name }).sound;
-
-const executeCallbacks = () => {
-  if (!callbacks.length) { return; }
-  callbacks.forEach( callback => callback(items, progressedCount) );
+export default {
+  onLoad, getSound, items, addSound, resumeCurrent, pauseCurrent,
+  allReady: new Promise.all( items.map( item => item.promise ) )
 };
 
-const addSound = (name, fileName) => {
+function onLoad (callback) {
+  callbacks.push(callback);
+}
+
+function getSound (name) {
+  return _find(items, { name }).sound;
+}
+
+function executeCallbacks () {
+  if (!callbacks.length) { return; }
+  callbacks.forEach( callback => callback(items, progressedCount) );
+}
+
+function resumeCurrent (item) {
+  if (item.isPaused) {
+    item.sound.play();
+    item.isPaused = false;
+  }
+}
+
+function pauseCurrent (item) {
+  if ( item.sound.playing() ) {
+    item.sound.pause();
+    item.isPaused = true;
+  }
+}
+
+function addSound (name, fileName) {
   if (!fileName) { fileName = name; }
 
   const offScreenPaused = false;
@@ -49,13 +56,4 @@ const addSound = (name, fileName) => {
   });
 
   items.push({ name, sound, promise, offScreenPaused });
-};
-
-// It _should_ deal with the distorted sounds issue on iOS
-// https://github.com/goldfire/howler.js/issues/434
-Howler.unload();
-
-export default {
-  onLoad, getSound, items, addSound,
-  allReady: new Promise.all( items.map( item => item.promise ) )
-};
+}
