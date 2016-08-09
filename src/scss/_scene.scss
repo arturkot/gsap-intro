@@ -30,4 +30,9 @@
   font-size: 24vw;
   color: white;
   perspective: 100vw;
+
+  // FF fix
+  div {
+    perspective: 100vw;
+  }
 }
