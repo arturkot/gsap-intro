@@ -23,8 +23,8 @@ tl
   }, 'sceneStart')
 
   .to(earth, 5, {
-    transformOrigin: '50% 50%',
-    scale: 200,
+    transformOrigin: `50% 50%`,
+    scale: 300,
     ease: Power1.easeIn
   }, 'sceneStart');
 
