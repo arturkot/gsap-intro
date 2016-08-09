@@ -353,6 +353,12 @@ td,
 th {
   padding: 0; }
 
+html, body {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%; }
+
 .scene {
   transition: opacity .5s;
   transform: translate(-50%, -50%);
@@ -363,13 +369,16 @@ th {
   height: 0;
   overflow: hidden;
   padding-bottom: 56.25%;
-  background: #E8F1F9; }
+  background: #E8F1F9;
+  opacity: 0; }
   .scene svg {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 100%; }
+  .is-ready .scene {
+    opacity: 1; }
 
 .scene__outro-text {
   width: 100%;
@@ -386,6 +395,7 @@ th {
     perspective: 100vw; }
 
 .scene-controls__control {
+  -webkit-appearance: none;
   display: none;
   position: fixed;
   top: 20px;
@@ -394,13 +404,80 @@ th {
   z-index: 999; }
   .is-debug .scene-controls__control {
     display: block; }
+  .scene-controls__control::-webkit-slider-runnable-track {
+    width: 90vw;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px; }
+  .scene-controls__control::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+    background: white;
+    margin-top: -4px; }
+  .scene-controls__control:focus {
+    outline: none; }
+  .scene-controls__control:focus::-webkit-slider-runnable-track {
+    background: #ccc; }
+  .scene-controls__control::-moz-range-track {
+    width: 90vw;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px; }
+  .scene-controls__control::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+    background: white;
+    margin-top: -4px; }
+  .scene-controls__control:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px; }
+  .scene-controls__control::-ms-track {
+    width: 90vw;
+    height: 5px;
+    background: transparent;
+    border-color: transparent;
+    border-width: 6px 0;
+    color: transparent; }
+  .scene-controls__control::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px; }
+  .scene-controls__control::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px; }
+  .scene-controls__control::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+    background: white;
+    margin-top: -4px; }
+  .scene-controls__control:focus::-ms-fill-lower {
+    background: #888; }
+  .scene-controls__control:focus::-ms-fill-upper {
+    background: #ccc; }
 
 .scene-controls__play {
-  display: none;
-  position: fixed;
-  top: 40px;
+  position: absolute;
+  top: 50px;
   left: 5vw;
-  z-index: 999; }
+  display: block;
+  padding: 4px 20px;
+  background: black;
+  border: 0 none;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  border: 1px solid white; }
   .is-debug .scene-controls__play {
     display: block; }
 
