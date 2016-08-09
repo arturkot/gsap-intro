@@ -382,6 +382,8 @@ th {
   font-size: 24vw;
   color: white;
   perspective: 100vw; }
+  .scene__outro-text div {
+    perspective: 100vw; }
 
 .scene-controls__control {
   display: none;
