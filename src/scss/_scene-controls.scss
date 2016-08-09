@@ -1,22 +1,110 @@
 .scene-controls__control {
+  $width: 90vw;
+
+  -webkit-appearance: none;
   display: none;
   position: fixed;
   top: 20px;
   left: 5vw;
-  width: 90vw;
+  width: $width;
   z-index: 999;
 
   .is-debug & {
     display: block;
   }
+
+  @mixin track {
+    width: $width;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+  }
+
+  @mixin thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    box-shadow: 0 2px 2px 0 rgba(black, 0.3);
+    background: white;
+    margin-top: -4px;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @include track;
+  }
+
+  &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      @include thumb;
+  }
+
+  &:focus {
+      outline: none;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+      background: #ccc;
+  }
+
+  &::-moz-range-track {
+      @include track;
+  }
+
+  &::-moz-range-thumb {
+      @include thumb;
+  }
+
+  &:-moz-focusring{
+      outline: 1px solid white;
+      outline-offset: -1px;
+  }
+
+  &::-ms-track {
+      width: $width;
+      height: 5px;
+      background: transparent;
+      border-color: transparent;
+      border-width: 6px 0;
+      color: transparent;
+  }
+
+  &::-ms-fill-lower {
+      background: #777;
+      border-radius: 10px;
+  }
+
+  &::-ms-fill-upper {
+      background: #ddd;
+      border-radius: 10px;
+  }
+
+  &::-ms-thumb {
+      @include thumb;
+  }
+
+  &:focus::-ms-fill-lower {
+      background: #888;
+  }
+
+  &:focus::-ms-fill-upper {
+      background: #ccc;
+  }
 }
 
 .scene-controls__play {
-  display: none;
-  position: fixed;
-  top: 40px;
+  position: absolute;
+  top: 50px;
   left: 5vw;
-  z-index: 999;
+  display: block;
+  padding: 4px 20px;
+  background: black;
+  border: 0 none;
+  color: white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  border: 1px solid white;
 
   .is-debug & {
     display: block;
