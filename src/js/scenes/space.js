@@ -7,12 +7,14 @@ import TimelineMax from 'gsap/src/uncompressed/TimelineMax';
 import { sky, earth } from '_root/scenes/objects';
 
 const tl = new TimelineMax();
-const musicSound = Sounds.getSound('music');
 
 tl
   .add('sceneStart')
 
-  .add( () => musicSound.play(), 'sceneStart' )
+  .add('playMusic')
+  .add( () => {
+    Sounds.placeSound('music', tl, 'playMusic');
+  }, 'playMusic' )
 
   .to(sky, 5, {
     transformOrigin: '50% 50%',

@@ -8,9 +8,6 @@ import TimelineMax from 'gsap/src/uncompressed/TimelineMax';
 import { mrTriangleAll } from '_root/scenes/objects';
 
 const tl = new TimelineMax();
-const hummingSound = Sounds.getSound('humming');
-const musicSound = Sounds.getSound('music');
-const buttonSound = Sounds.getSound('button');
 
 tl
   .add('sceneStart')
@@ -101,8 +98,16 @@ tl
     ease: Power1.easeOut
   })
 
-  .add( () => musicSound.fade(1, 0, 500) )
-  .add( () => buttonSound.play(), '-=0.2' )
+  .add('finishMusic')
+  .add( () => {
+    Sounds.finishSound('music', tl, 'playMusic', 'finishMusic', 500);
+  }, 'finishMusic' )
+
+  .add('playButtonSound', '-=0.2')
+
+  .add( () => {
+    Sounds.placeSound('button', tl, 'playButtonSound');
+  }, 'playButtonSound' )
 
   .to(mrTriangleAll.button, 0.2, {
     y: 5
@@ -128,7 +133,9 @@ tl
 
   .add('cover', '+=0.4')
 
-  .add( () => hummingSound.play(), 'cover' )
+  .add( () => {
+    Sounds.placeSound('humming', tl, 'cover');
+  }, 'cover' )
 
   .to(mrTriangleAll.shadow, 0.3, {
     opacity: 0,

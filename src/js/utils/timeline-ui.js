@@ -4,7 +4,7 @@ export default function(timeline) {
   const bodyEl = document.querySelector('body');
   const timelineControlEl = document.createElement('input');
   const timelinePlayEl = document.createElement('button');
-  const { items, resumeCurrent, pauseCurrent } = Sounds;
+  const { pauseAll, resumeAll } = Sounds;
 
   let intitalProgress = parseFloat( localStorage.getItem('timelineValue') );
   let isPlaying = false;
@@ -32,17 +32,18 @@ export default function(timeline) {
 
   window.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible' && isPlaying) {
-      items.forEach(resumeCurrent);
+      resumeAll(timeline);
     }
 
     if (document.visibilityState === 'hidden') {
-      items.forEach(pauseCurrent);
+      pauseAll();
     }
   });
 
   timelineControlEl.addEventListener('input', () => {
     if (isPlaying) {
       isPlaying = false;
+      pauseAll();
       timeline.pause();
     }
 
@@ -52,11 +53,11 @@ export default function(timeline) {
   timelinePlayEl.addEventListener('click', () => {
     if (isPlaying) {
       isPlaying = false;
-      items.forEach(pauseCurrent);
+      pauseAll();
       timeline.pause();
     } else {
       isPlaying = true;
-      items.forEach(resumeCurrent);
+      resumeAll(timeline);
       timeline.play();
     }
   });
