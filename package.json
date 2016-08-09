@@ -8,9 +8,9 @@
     "babel-preset-es2015": "6.5.0",
     "babelify": "7.2.0",
     "browserify": "12.0.1",
-    "browserify-shim": "^3.8.12",
-    "cp-cli": "^1.0.2",
-    "gsap": "1.18.2",
+    "browserify-shim": "3.8.12",
+    "cp-cli": "1.0.2",
+    "gsap": "1.19.0",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.0",
     "gulp-file-include": "0.14.0",
@@ -22,12 +22,12 @@
     "mkdirp": "0.5.1",
     "normalize-scss-vanilla": "1.0.1",
     "onchange": "2.0.0",
-    "opener": "^1.4.1",
+    "opener": "1.4.1",
     "parallelshell": "2.0.0",
     "promise-polyfill": "3.1.0",
     "rimraf": "2.5.4",
     "uglify-js": "2.4.24",
-    "watchify": "^3.7.0"
+    "watchify": "3.7.0"
   },
   "scripts": {
     "clear-dist": "rimraf ./dist",
