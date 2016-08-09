@@ -12,7 +12,7 @@ Howler.unload();
 
 export default {
   onLoad, getSound, items, addSound, resumeCurrent, pauseCurrent,
-  allReady: new Promise.all( items.map( item => item.promise ) )
+  allReady: () => new Promise.all( items.map( item => item.promise ) )
 };
 
 function onLoad (callback) {
