@@ -4,7 +4,7 @@ import { Elastic } from 'gsap/src/uncompressed/easing/EasePack';
 import SplitText from 'SplitText';
 import 'gsap/src/uncompressed/TweenMax';
 import TimelineMax from 'gsap/src/uncompressed/TimelineMax';
-import { outroText } from '_root/scenes/objects';
+import { outroText } from '_root/setup/objects';
 
 const tl = new TimelineMax();
 const outroTextLetters = new SplitText(outroText).chars;

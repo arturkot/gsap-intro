@@ -5,7 +5,7 @@ import Sounds from '_root/setup/sounds';
 import { Power1, Elastic, Bounce } from 'gsap/src/uncompressed/easing/EasePack';
 import 'gsap/src/uncompressed/TweenMax';
 import TimelineMax from 'gsap/src/uncompressed/TimelineMax';
-import { mrTriangleAll } from '_root/scenes/objects';
+import { mrTriangleAll } from '_root/setup/objects';
 
 const tl = new TimelineMax();
 
