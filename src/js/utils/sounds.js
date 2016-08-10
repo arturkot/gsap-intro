@@ -62,7 +62,9 @@ function placeSound (name, tl, label) {
   const sound = item.sound;
 
   if (isPlaying) {
-    sound.play();
+    sound
+      .seek(0)
+      .play();
   }
 
   if ( placedItems.some( checkIfPlaced.bind(null, name, label) ) ) {
